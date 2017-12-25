@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sj.iot.gateway.data.dao.IAccountsDAO">
+    <resultMap id="BaseResultMap" type="org.sj.iot.gateway.data.model.Accounts">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="userid" jdbcType="VARCHAR" property="userid"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="userheadpic" jdbcType="VARCHAR" property="userheadpic"/>
+        <result column="gpassword" jdbcType="VARCHAR" property="gpassword"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      id, userid, username, userheadpic, gpassword
+    </sql>
+
+    <select id="get" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from accounts limit 0, 1
+    </select>
+
+    <select id="count" resultType="_long">
+        select count(1) from accounts
+    </select>
+
+    <insert id="insert" parameterType="org.sj.iot.gateway.data.model.Accounts">
+      insert into accounts (<include refid="Base_Column_List"/>) values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{userheadpic,jdbcType=VARCHAR}, #{gpassword,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="update" parameterType="org.sj.iot.gateway.data.model.Accounts">
+        update accounts
+        <set>
+            <if test="userid != null">
+                userid = #{userid,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="userheadpic != null">
+                userheadpic = #{userheadpic,jdbcType=VARCHAR},
+            </if>
+            <if test="gpassword != null">
+                gpassword = #{gpassword,jdbcType=VARCHAR},
+            </if>
+        </set>
+    </update>
+</mapper>

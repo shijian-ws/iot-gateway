@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sj.iot.gateway.data.dao.IGatewayinfoDAO">
+    <resultMap id="BaseResultMap" type="org.sj.iot.gateway.data.model.Gatewayinfo">
+        <id column="uuid" jdbcType="INTEGER" property="uuid"/>
+        <result column="manufacturer" jdbcType="VARCHAR" property="manufacturer"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="mac" jdbcType="VARCHAR" property="mac"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="init" jdbcType="INTEGER" property="init"/>
+        <result column="mode" jdbcType="INTEGER" property="mode"/>
+        <result column="swversion" jdbcType="VARCHAR" property="swversion"/>
+        <result column="hwversion" jdbcType="VARCHAR" property="hwversion"/>
+        <result column="channel" jdbcType="INTEGER" property="channel"/>
+        <result column="netid" jdbcType="INTEGER" property="netid"/>
+        <result column="power" jdbcType="INTEGER" property="power"/>
+        <result column="userid" jdbcType="INTEGER" property="userid"/>
+        <result column="rawuserid" jdbcType="INTEGER" property="rawuserid"/>
+        <result column="lightcount" jdbcType="INTEGER" property="lightcount"/>
+        <result column="radioon" jdbcType="INTEGER" property="radioon"/>
+        <result column="wifimode" jdbcType="INTEGER" property="wifimode"/>
+        <result column="wifissid" jdbcType="VARCHAR" property="wifissid"/>
+        <result column="wifipwd" jdbcType="VARCHAR" property="wifipwd"/>
+        <result column="connssid" jdbcType="VARCHAR" property="connssid"/>
+        <result column="connpwd" jdbcType="VARCHAR" property="connpwd"/>
+        <result column="autoupdate" jdbcType="INTEGER" property="autoupdate"/>
+        <result column="autobackup" jdbcType="INTEGER" property="autobackup"/>
+        <result column="wgkgilighton" jdbcType="INTEGER" property="wgkgilighton"/>
+        <result column="wgkgilightsync" jdbcType="INTEGER" property="wgkgilightsync"/>
+        <result column="geekmode" jdbcType="INTEGER" property="geekmode"/>
+        <result column="geekkey" jdbcType="VARCHAR" property="geekkey"/>
+        <result column="remoteenable" jdbcType="INTEGER" property="remoteenable"/>
+        <result column="serverip" jdbcType="VARCHAR" property="serverip"/>
+        <result column="serverport" jdbcType="INTEGER" property="serverport"/>
+        <result column="mapwidth" jdbcType="INTEGER" property="mapwidth"/>
+        <result column="mapheight" jdbcType="INTEGER" property="mapheight"/>
+        <result column="userdata" jdbcType="VARCHAR" property="userdata"/>
+        <result column="serverconnected" jdbcType="INTEGER" property="serverconnected"/>
+        <result column="reserve1" jdbcType="INTEGER" property="reserve1"/>
+        <result column="reserve2" jdbcType="INTEGER" property="reserve2"/>
+        <result column="reserve3" jdbcType="INTEGER" property="reserve3"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uuid, manufacturer, name, mac, type, init, mode, swversion, hwversion, channel, netid,
+        power, userid, rawuserid, lightcount, radioon, wifimode, wifissid, wifipwd, connssid,
+        connpwd, autoupdate, autobackup, wgkgilighton, wgkgilightsync, geekmode, geekkey,
+        remoteenable, serverip, serverport, mapwidth, mapheight, userdata, serverconnected,
+        reserve1, reserve2, reserve3
+    </sql>
+
+    <select id="get" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from gatewayinfo limit 0, 1
+    </select>
+
+    <select id="count" resultMap="BaseResultMap">
+        select count(1) from gatewayinfo
+    </select>
+
+    <insert id="insert" parameterType="org.sj.iot.gateway.data.model.Gatewayinfo">
+        insert into gatewayinfo (<include refid="Base_Column_List"/>)
+        values (#{uuid,jdbcType=INTEGER}, #{manufacturer,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+          #{mac,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{init,jdbcType=INTEGER}, #{mode,jdbcType=INTEGER},
+          #{swversion,jdbcType=VARCHAR}, #{hwversion,jdbcType=VARCHAR}, #{channel,jdbcType=INTEGER},
+          #{netid,jdbcType=INTEGER}, #{power,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER},
+          #{rawuserid,jdbcType=INTEGER}, #{lightcount,jdbcType=INTEGER}, #{radioon,jdbcType=INTEGER},
+          #{wifimode,jdbcType=INTEGER}, #{wifissid,jdbcType=VARCHAR}, #{wifipwd,jdbcType=VARCHAR},
+          #{connssid,jdbcType=VARCHAR}, #{connpwd,jdbcType=VARCHAR}, #{autoupdate,jdbcType=INTEGER},
+          #{autobackup,jdbcType=INTEGER}, #{wgkgilighton,jdbcType=INTEGER}, #{wgkgilightsync,jdbcType=INTEGER},
+          #{geekmode,jdbcType=INTEGER}, #{geekkey,jdbcType=VARCHAR}, #{remoteenable,jdbcType=INTEGER},
+          #{serverip,jdbcType=VARCHAR}, #{serverport,jdbcType=INTEGER}, #{mapwidth,jdbcType=INTEGER},
+          #{mapheight,jdbcType=INTEGER}, #{userdata,jdbcType=VARCHAR}, #{serverconnected,jdbcType=INTEGER},
+          #{reserve1,jdbcType=INTEGER}, #{reserve2,jdbcType=INTEGER}, #{reserve3,jdbcType=INTEGER}
+          )
+    </insert>
+
+    <update id="update" parameterType="org.sj.iot.gateway.data.model.Gatewayinfo">
+        update gatewayinfo
+        <set>
+            <if test="manufacturer != null">
+                manufacturer = #{manufacturer,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="init != null">
+                init = #{init,jdbcType=INTEGER},
+            </if>
+            <if test="mode != null">
+                mode = #{mode,jdbcType=INTEGER},
+            </if>
+            <if test="swversion != null">
+                swversion = #{swversion,jdbcType=VARCHAR},
+            </if>
+            <if test="hwversion != null">
+                hwversion = #{hwversion,jdbcType=VARCHAR},
+            </if>
+            <if test="channel != null">
+                channel = #{channel,jdbcType=INTEGER},
+            </if>
+            <if test="netid != null">
+                netid = #{netid,jdbcType=INTEGER},
+            </if>
+            <if test="power != null">
+                power = #{power,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                userid = #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="rawuserid != null">
+                rawuserid = #{rawuserid,jdbcType=INTEGER},
+            </if>
+            <if test="lightcount != null">
+                lightcount = #{lightcount,jdbcType=INTEGER},
+            </if>
+            <if test="radioon != null">
+                radioon = #{radioon,jdbcType=INTEGER},
+            </if>
+            <if test="wifimode != null">
+                wifimode = #{wifimode,jdbcType=INTEGER},
+            </if>
+            <if test="wifissid != null">
+                wifissid = #{wifissid,jdbcType=VARCHAR},
+            </if>
+            <if test="wifipwd != null">
+                wifipwd = #{wifipwd,jdbcType=VARCHAR},
+            </if>
+            <if test="connssid != null">
+                connssid = #{connssid,jdbcType=VARCHAR},
+            </if>
+            <if test="connpwd != null">
+                connpwd = #{connpwd,jdbcType=VARCHAR},
+            </if>
+            <if test="autoupdate != null">
+                autoupdate = #{autoupdate,jdbcType=INTEGER},
+            </if>
+            <if test="autobackup != null">
+                autobackup = #{autobackup,jdbcType=INTEGER},
+            </if>
+            <if test="wgkgilighton != null">
+                wgkgilighton = #{wgkgilighton,jdbcType=INTEGER},
+            </if>
+            <if test="wgkgilightsync != null">
+                wgkgilightsync = #{wgkgilightsync,jdbcType=INTEGER},
+            </if>
+            <if test="geekmode != null">
+                geekmode = #{geekmode,jdbcType=INTEGER},
+            </if>
+            <if test="geekkey != null">
+                geekkey = #{geekkey,jdbcType=VARCHAR},
+            </if>
+            <if test="remoteenable != null">
+                remoteenable = #{remoteenable,jdbcType=INTEGER},
+            </if>
+            <if test="serverip != null">
+                serverip = #{serverip,jdbcType=VARCHAR},
+            </if>
+            <if test="serverport != null">
+                serverport = #{serverport,jdbcType=INTEGER},
+            </if>
+            <if test="mapwidth != null">
+                mapwidth = #{mapwidth,jdbcType=INTEGER},
+            </if>
+            <if test="mapheight != null">
+                mapheight = #{mapheight,jdbcType=INTEGER},
+            </if>
+            <if test="userdata != null">
+                userdata = #{userdata,jdbcType=VARCHAR},
+            </if>
+            <if test="serverconnected != null">
+                serverconnected = #{serverconnected,jdbcType=INTEGER},
+            </if>
+            <if test="reserve1 != null">
+                reserve1 = #{reserve1,jdbcType=INTEGER},
+            </if>
+            <if test="reserve2 != null">
+                reserve2 = #{reserve2,jdbcType=INTEGER},
+            </if>
+            <if test="reserve3 != null">
+                reserve3 = #{reserve3,jdbcType=INTEGER},
+            </if>
+        </set>
+    </update>
+</mapper>

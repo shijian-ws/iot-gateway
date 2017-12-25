@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" scanPeriod="60 seconds" debug="false">
+    <!-- 屏蔽指定日志 -->
+    <logger name="org.apache.zookeeper.ClientCnxn" level="OFF"/>
+    <logger name="org.apache.zookeeper.ClientCnxnSocketNIO" level="OFF"/>
+    <logger name="org.apache.curator.framework.recipes.cache.TreeCache" level="OFF"/>
+    <logger name="io.netty.channel.DefaultChannelPipeline" level="OFF"/>
+    <logger name="io.netty.handler.logging.LoggingHandler" level="DEBUG"/>
+    <logger name="org.apache.activemq.ActiveMQSession" level="WARN"/>
+    <logger name="org.apache.activemq.transport.AbstractInactivityMonitor" level="OFF"/>
+    <logger name="logback" level="OFF"/>
+
+    <!-- 包含运行环境相关配置文件 -->
+    <include resource="logback-${spring.profiles.active:-product}.xml"/>
+</configuration>

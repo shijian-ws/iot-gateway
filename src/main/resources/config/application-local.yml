@@ -1,0 +1,12 @@
+# 本地开发配置
+mybatis:
+    configuration:
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+connection:
+    client:
+        host: 127.0.0.1
+        port: 30000
+        ssl: false
+        heartbeat-time: 30
+        reconnect-time: 30

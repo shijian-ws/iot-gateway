@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+    <!-- 文件输出日志配置 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append> <!-- 追加到已存在日志文件 -->
+        <encoder charset="UTF-8">
+            <pattern>%date{yyyy/MM/dd HH:mm:ss} [%-5level] [%thread] %logger\(%line\) - %msg%n</pattern> <!-- 配置日志输出格式 -->
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy"> <!-- 配置日志文件策略 -->
+            <!-- 文件存储位置 -->
+            <fileNamePattern>/usr/local/logs/gateway-logback-%d{yyyy-MM-dd}_%i.gz</fileNamePattern>
+            <!-- 每个文件不超过100M -->
+            <maxFileSize>100MB</maxFileSize>
+            <!-- 最多保存15天 -->
+            <maxHistory>15</maxHistory>
+            <!-- 总大小不超过5G -->
+            <totalSizeCap>5GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="FILE"/>
+    </root>
+</included>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sj.iot.gateway.data.dao.ILightsDAO">
+    <resultMap id="BaseResultMap" type="org.sj.iot.gateway.data.model.Lights">
+        <id column="uuid" jdbcType="INTEGER" property="uuid"/>
+        <result column="net_addr" jdbcType="INTEGER" property="netAddr"/>
+        <result column="mac" jdbcType="VARCHAR" property="mac"/>
+        <result column="dnlm" jdbcType="INTEGER" property="dnlm"/>
+        <result column="major_type" jdbcType="INTEGER" property="majorType"/>
+        <result column="minor_type" jdbcType="INTEGER" property="minorType"/>
+        <result column="versw" jdbcType="INTEGER" property="versw"/>
+        <result column="verhw" jdbcType="INTEGER" property="verhw"/>
+        <result column="fun_code" jdbcType="INTEGER" property="funCode"/>
+        <result column="reserveXX" jdbcType="INTEGER" property="reservexx"/>
+        <result column="m_light_des" jdbcType="INTEGER" property="mLightDes"/>
+        <result column="s_light_des" jdbcType="INTEGER" property="sLightDes"/>
+        <result column="m_color_mode" jdbcType="INTEGER" property="mColorMode"/>
+        <result column="s_color_mode" jdbcType="INTEGER" property="sColorMode"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="lightsnum" jdbcType="INTEGER" property="lightsnum"/>
+        <result column="pixels" jdbcType="INTEGER" property="pixels"/>
+        <result column="mode1" jdbcType="INTEGER" property="mode1"/>
+        <result column="r1" jdbcType="INTEGER" property="r1"/>
+        <result column="g1" jdbcType="INTEGER" property="g1"/>
+        <result column="b1" jdbcType="INTEGER" property="b1"/>
+        <result column="h1" jdbcType="INTEGER" property="h1"/>
+        <result column="s1" jdbcType="INTEGER" property="s1"/>
+        <result column="w1" jdbcType="INTEGER" property="w1"/>
+        <result column="c1" jdbcType="INTEGER" property="c1"/>
+        <result column="cri1" jdbcType="INTEGER" property="cri1"/>
+        <result column="warm1" jdbcType="INTEGER" property="warm1"/>
+        <result column="bri1" jdbcType="INTEGER" property="bri1"/>
+        <result column="on1" jdbcType="INTEGER" property="on1"/>
+        <result column="mode2" jdbcType="INTEGER" property="mode2"/>
+        <result column="r2" jdbcType="INTEGER" property="r2"/>
+        <result column="g2" jdbcType="INTEGER" property="g2"/>
+        <result column="b2" jdbcType="INTEGER" property="b2"/>
+        <result column="h2" jdbcType="INTEGER" property="h2"/>
+        <result column="s2" jdbcType="INTEGER" property="s2"/>
+        <result column="w2" jdbcType="INTEGER" property="w2"/>
+        <result column="c2" jdbcType="INTEGER" property="c2"/>
+        <result column="cri2" jdbcType="INTEGER" property="cri2"/>
+        <result column="warm2" jdbcType="INTEGER" property="warm2"/>
+        <result column="bri2" jdbcType="INTEGER" property="bri2"/>
+        <result column="on2" jdbcType="INTEGER" property="on2"/>
+        <result column="online" jdbcType="INTEGER" property="online"/>
+        <result column="locx" jdbcType="INTEGER" property="locx"/>
+        <result column="locy" jdbcType="INTEGER" property="locy"/>
+        <result column="dynamic" jdbcType="INTEGER" property="dynamic"/>
+        <result column="newdevice" jdbcType="INTEGER" property="newdevice"/>
+        <result column="reserve1" jdbcType="INTEGER" property="reserve1"/>
+        <result column="reserve2" jdbcType="INTEGER" property="reserve2"/>
+        <result column="reserve3" jdbcType="INTEGER" property="reserve3"/>
+        <result column="creation_time" jdbcType="INTEGER" property="creationTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uuid, net_addr, mac, dnlm, major_type, minor_type, versw, verhw, fun_code, reserveXX,
+        m_light_des, s_light_des, m_color_mode, s_color_mode, name, lightsnum, pixels, mode1,
+        r1, g1, b1, h1, s1, w1, c1, cri1, warm1, bri1, on1, mode2, r2, g2, b2, h2, s2, w2,
+        c2, cri2, warm2, bri2, on2, online, locx, locy, dynamic, newdevice, reserve1, reserve2,
+        reserve3, creation_time
+    </sql>
+
+    <select id="listLight" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from lights
+    </select>
+
+    <select id="getByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from lights where uuid = #{uuid,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insert" parameterType="org.sj.iot.gateway.data.model.Lights">
+        insert into lights (<include refid="Base_Column_List"/>)
+        values (#{uuid,jdbcType=INTEGER}, #{netAddr,jdbcType=INTEGER}, #{mac,jdbcType=VARCHAR},
+          #{dnlm,jdbcType=INTEGER}, #{majorType,jdbcType=INTEGER}, #{minorType,jdbcType=INTEGER},
+          #{versw,jdbcType=INTEGER}, #{verhw,jdbcType=INTEGER}, #{funCode,jdbcType=INTEGER},
+          #{reservexx,jdbcType=INTEGER}, #{mLightDes,jdbcType=INTEGER}, #{sLightDes,jdbcType=INTEGER},
+          #{mColorMode,jdbcType=INTEGER}, #{sColorMode,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+          #{lightsnum,jdbcType=INTEGER}, #{pixels,jdbcType=INTEGER}, #{mode1,jdbcType=INTEGER},
+          #{r1,jdbcType=INTEGER}, #{g1,jdbcType=INTEGER}, #{b1,jdbcType=INTEGER}, #{h1,jdbcType=INTEGER},
+          #{s1,jdbcType=INTEGER}, #{w1,jdbcType=INTEGER}, #{c1,jdbcType=INTEGER}, #{cri1,jdbcType=INTEGER},
+          #{warm1,jdbcType=INTEGER}, #{bri1,jdbcType=INTEGER}, #{on1,jdbcType=INTEGER}, #{mode2,jdbcType=INTEGER},
+          #{r2,jdbcType=INTEGER}, #{g2,jdbcType=INTEGER}, #{b2,jdbcType=INTEGER}, #{h2,jdbcType=INTEGER},
+          #{s2,jdbcType=INTEGER}, #{w2,jdbcType=INTEGER}, #{c2,jdbcType=INTEGER}, #{cri2,jdbcType=INTEGER},
+          #{warm2,jdbcType=INTEGER}, #{bri2,jdbcType=INTEGER}, #{on2,jdbcType=INTEGER}, #{online,jdbcType=INTEGER},
+          #{locx,jdbcType=INTEGER}, #{locy,jdbcType=INTEGER}, #{dynamic,jdbcType=INTEGER},
+          #{newdevice,jdbcType=INTEGER}, #{reserve1,jdbcType=INTEGER}, #{reserve2,jdbcType=INTEGER},
+          #{reserve3,jdbcType=INTEGER}, #{creationTime,jdbcType=INTEGER})
+      </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from lights where uuid = #{uuid,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateByPrimaryKey" parameterType="org.sj.iot.gateway.data.model.Lights">
+        update lights
+        <set>
+            <if test="netAddr != null">
+                net_addr = #{netAddr,jdbcType=INTEGER},
+            </if>
+            <if test="mac != null">
+                mac = #{mac,jdbcType=VARCHAR},
+            </if>
+            <if test="dnlm != null">
+                dnlm = #{dnlm,jdbcType=INTEGER},
+            </if>
+            <if test="majorType != null">
+                major_type = #{majorType,jdbcType=INTEGER},
+            </if>
+            <if test="minorType != null">
+                minor_type = #{minorType,jdbcType=INTEGER},
+            </if>
+            <if test="versw != null">
+                versw = #{versw,jdbcType=INTEGER},
+            </if>
+            <if test="verhw != null">
+                verhw = #{verhw,jdbcType=INTEGER},
+            </if>
+            <if test="funCode != null">
+                fun_code = #{funCode,jdbcType=INTEGER},
+            </if>
+            <if test="reservexx != null">
+                reserveXX = #{reservexx,jdbcType=INTEGER},
+            </if>
+            <if test="mLightDes != null">
+                m_light_des = #{mLightDes,jdbcType=INTEGER},
+            </if>
+            <if test="sLightDes != null">
+                s_light_des = #{sLightDes,jdbcType=INTEGER},
+            </if>
+            <if test="mColorMode != null">
+                m_color_mode = #{mColorMode,jdbcType=INTEGER},
+            </if>
+            <if test="sColorMode != null">
+                s_color_mode = #{sColorMode,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="lightsnum != null">
+                lightsnum = #{lightsnum,jdbcType=INTEGER},
+            </if>
+            <if test="pixels != null">
+                pixels = #{pixels,jdbcType=INTEGER},
+            </if>
+            <if test="mode1 != null">
+                mode1 = #{mode1,jdbcType=INTEGER},
+            </if>
+            <if test="r1 != null">
+                r1 = #{r1,jdbcType=INTEGER},
+            </if>
+            <if test="g1 != null">
+                g1 = #{g1,jdbcType=INTEGER},
+            </if>
+            <if test="b1 != null">
+                b1 = #{b1,jdbcType=INTEGER},
+            </if>
+            <if test="h1 != null">
+                h1 = #{h1,jdbcType=INTEGER},
+            </if>
+            <if test="s1 != null">
+                s1 = #{s1,jdbcType=INTEGER},
+            </if>
+            <if test="w1 != null">
+                w1 = #{w1,jdbcType=INTEGER},
+            </if>
+            <if test="c1 != null">
+                c1 = #{c1,jdbcType=INTEGER},
+            </if>
+            <if test="cri1 != null">
+                cri1 = #{cri1,jdbcType=INTEGER},
+            </if>
+            <if test="warm1 != null">
+                warm1 = #{warm1,jdbcType=INTEGER},
+            </if>
+            <if test="bri1 != null">
+                bri1 = #{bri1,jdbcType=INTEGER},
+            </if>
+            <if test="on1 != null">
+                on1 = #{on1,jdbcType=INTEGER},
+            </if>
+            <if test="mode2 != null">
+                mode2 = #{mode2,jdbcType=INTEGER},
+            </if>
+            <if test="r2 != null">
+                r2 = #{r2,jdbcType=INTEGER},
+            </if>
+            <if test="g2 != null">
+                g2 = #{g2,jdbcType=INTEGER},
+            </if>
+            <if test="b2 != null">
+                b2 = #{b2,jdbcType=INTEGER},
+            </if>
+            <if test="h2 != null">
+                h2 = #{h2,jdbcType=INTEGER},
+            </if>
+            <if test="s2 != null">
+                s2 = #{s2,jdbcType=INTEGER},
+            </if>
+            <if test="w2 != null">
+                w2 = #{w2,jdbcType=INTEGER},
+            </if>
+            <if test="c2 != null">
+                c2 = #{c2,jdbcType=INTEGER},
+            </if>
+            <if test="cri2 != null">
+                cri2 = #{cri2,jdbcType=INTEGER},
+            </if>
+            <if test="warm2 != null">
+                warm2 = #{warm2,jdbcType=INTEGER},
+            </if>
+            <if test="bri2 != null">
+                bri2 = #{bri2,jdbcType=INTEGER},
+            </if>
+            <if test="on2 != null">
+                on2 = #{on2,jdbcType=INTEGER},
+            </if>
+            <if test="online != null">
+                online = #{online,jdbcType=INTEGER},
+            </if>
+            <if test="locx != null">
+                locx = #{locx,jdbcType=INTEGER},
+            </if>
+            <if test="locy != null">
+                locy = #{locy,jdbcType=INTEGER},
+            </if>
+            <if test="dynamic != null">
+                dynamic = #{dynamic,jdbcType=INTEGER},
+            </if>
+            <if test="newdevice != null">
+                newdevice = #{newdevice,jdbcType=INTEGER},
+            </if>
+            <if test="reserve1 != null">
+                reserve1 = #{reserve1,jdbcType=INTEGER},
+            </if>
+            <if test="reserve2 != null">
+                reserve2 = #{reserve2,jdbcType=INTEGER},
+            </if>
+            <if test="reserve3 != null">
+                reserve3 = #{reserve3,jdbcType=INTEGER},
+            </if>
+        </set>
+        where uuid = #{uuid,jdbcType=INTEGER}
+    </update>
+</mapper>

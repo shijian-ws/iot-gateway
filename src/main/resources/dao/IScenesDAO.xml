@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sj.iot.gateway.data.dao.IScenesDAO">
+    <resultMap id="BaseResultMap" type="org.sj.iot.gateway.data.model.Scenes">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="sceneid" jdbcType="INTEGER" property="sceneid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="active" jdbcType="INTEGER" property="active"/>
+        <result column="defscene" jdbcType="INTEGER" property="defscene"/>
+        <result column="hidden" jdbcType="INTEGER" property="hidden"/>
+        <result column="icontype" jdbcType="INTEGER" property="icontype"/>
+        <result column="iconurl" jdbcType="VARCHAR" property="iconurl"/>
+        <result column="order_index" jdbcType="INTEGER" property="orderIndex"/>
+        <result column="userdata" jdbcType="VARCHAR" property="userdata"/>
+        <result column="scenecmds" jdbcType="VARCHAR" property="scenecmds"/>
+        <result column="dynamic" jdbcType="INTEGER" property="dynamic"/>
+        <result column="zsceneids" jdbcType="VARCHAR" property="zsceneids"/>
+        <result column="defaultbri" jdbcType="INTEGER" property="defaultbri"/>
+        <result column="offsetbri" jdbcType="INTEGER" property="offsetbri"/>
+        <result column="reserve1" jdbcType="INTEGER" property="reserve1"/>
+        <result column="reserve2" jdbcType="INTEGER" property="reserve2"/>
+        <result column="creation_time" jdbcType="INTEGER" property="creationTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, sceneid, name, type, active, defscene, hidden, icontype, iconurl, order_index,
+        userdata, scenecmds, dynamic, zsceneids, defaultbri, offsetbri, reserve1, reserve2,
+        creation_time
+    </sql>
+
+    <select id="listScene" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from scenes
+    </select>
+
+    <select id="getByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from scenes where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insert" parameterType="org.sj.iot.gateway.data.model.Scenes">
+        insert into scenes (<include refid="Base_Column_List"/>)
+        values (#{id,jdbcType=INTEGER}, #{sceneid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+          #{type,jdbcType=INTEGER}, #{active,jdbcType=INTEGER}, #{defscene,jdbcType=INTEGER},
+          #{hidden,jdbcType=INTEGER}, #{icontype,jdbcType=INTEGER}, #{iconurl,jdbcType=VARCHAR},
+          #{orderIndex,jdbcType=INTEGER}, #{userdata,jdbcType=VARCHAR}, #{scenecmds,jdbcType=VARCHAR},
+          #{dynamic,jdbcType=INTEGER}, #{zsceneids,jdbcType=VARCHAR}, #{defaultbri,jdbcType=INTEGER},
+          #{offsetbri,jdbcType=INTEGER}, #{reserve1,jdbcType=INTEGER}, #{reserve2,jdbcType=INTEGER},
+          #{creationTime,jdbcType=INTEGER})
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from scenes where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateByPrimaryKey" parameterType="org.sj.iot.gateway.data.model.Scenes">
+        update scenes
+        <set>
+            <if test="sceneid != null">
+                sceneid = #{sceneid,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="active != null">
+                active = #{active,jdbcType=INTEGER},
+            </if>
+            <if test="defscene != null">
+                defscene = #{defscene,jdbcType=INTEGER},
+            </if>
+            <if test="hidden != null">
+                hidden = #{hidden,jdbcType=INTEGER},
+            </if>
+            <if test="icontype != null">
+                icontype = #{icontype,jdbcType=INTEGER},
+            </if>
+            <if test="iconurl != null">
+                iconurl = #{iconurl,jdbcType=VARCHAR},
+            </if>
+            <if test="orderIndex != null">
+                order_index = #{orderIndex,jdbcType=INTEGER},
+            </if>
+            <if test="userdata != null">
+                userdata = #{userdata,jdbcType=VARCHAR},
+            </if>
+            <if test="scenecmds != null">
+                scenecmds = #{scenecmds,jdbcType=VARCHAR},
+            </if>
+            <if test="dynamic != null">
+                dynamic = #{dynamic,jdbcType=INTEGER},
+            </if>
+            <if test="zsceneids != null">
+                zsceneids = #{zsceneids,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultbri != null">
+                defaultbri = #{defaultbri,jdbcType=INTEGER},
+            </if>
+            <if test="offsetbri != null">
+                offsetbri = #{offsetbri,jdbcType=INTEGER},
+            </if>
+            <if test="reserve1 != null">
+                reserve1 = #{reserve1,jdbcType=INTEGER},
+            </if>
+            <if test="reserve2 != null">
+                reserve2 = #{reserve2,jdbcType=INTEGER},
+            </if>
+            <if test="creationTime != null">
+                creation_time = #{creationTime,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

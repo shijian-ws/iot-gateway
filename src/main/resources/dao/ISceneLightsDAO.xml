@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sj.iot.gateway.data.dao.ISceneLightsDAO">
+    <resultMap id="BaseResultMap" type="org.sj.iot.gateway.data.model.SceneLights">
+        <id column="uuid" jdbcType="INTEGER" property="uuid"/>
+        <result column="sceneid" jdbcType="INTEGER" property="sceneid"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="mac" jdbcType="VARCHAR" property="mac"/>
+        <result column="dnlm" jdbcType="INTEGER" property="dnlm"/>
+        <result column="mode1" jdbcType="INTEGER" property="mode1"/>
+        <result column="r1" jdbcType="INTEGER" property="r1"/>
+        <result column="g1" jdbcType="INTEGER" property="g1"/>
+        <result column="b1" jdbcType="INTEGER" property="b1"/>
+        <result column="h1" jdbcType="INTEGER" property="h1"/>
+        <result column="s1" jdbcType="INTEGER" property="s1"/>
+        <result column="w1" jdbcType="INTEGER" property="w1"/>
+        <result column="c1" jdbcType="INTEGER" property="c1"/>
+        <result column="cri1" jdbcType="INTEGER" property="cri1"/>
+        <result column="warm1" jdbcType="INTEGER" property="warm1"/>
+        <result column="bri1" jdbcType="INTEGER" property="bri1"/>
+        <result column="on1" jdbcType="INTEGER" property="on1"/>
+        <result column="mode2" jdbcType="INTEGER" property="mode2"/>
+        <result column="r2" jdbcType="INTEGER" property="r2"/>
+        <result column="g2" jdbcType="INTEGER" property="g2"/>
+        <result column="b2" jdbcType="INTEGER" property="b2"/>
+        <result column="h2" jdbcType="INTEGER" property="h2"/>
+        <result column="s2" jdbcType="INTEGER" property="s2"/>
+        <result column="w2" jdbcType="INTEGER" property="w2"/>
+        <result column="c2" jdbcType="INTEGER" property="c2"/>
+        <result column="cri2" jdbcType="INTEGER" property="cri2"/>
+        <result column="warm2" jdbcType="INTEGER" property="warm2"/>
+        <result column="bri2" jdbcType="INTEGER" property="bri2"/>
+        <result column="on2" jdbcType="INTEGER" property="on2"/>
+        <result column="dynamic" jdbcType="INTEGER" property="dynamic"/>
+        <result column="order_index" jdbcType="INTEGER" property="orderIndex"/>
+        <result column="reserve1" jdbcType="INTEGER" property="reserve1"/>
+        <result column="creation_time" jdbcType="INTEGER" property="creationTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uuid, sceneid, type, mac, dnlm, mode1, r1, g1, b1, h1, s1, w1, c1, cri1, warm1, bri1,
+        on1, mode2, r2, g2, b2, h2, s2, w2, c2, cri2, warm2, bri2, on2, dynamic, order_index,
+        reserve1, creation_time
+    </sql>
+
+    <insert id="insert" parameterType="org.sj.iot.gateway.data.model.SceneLights">
+        insert into scene_lights (<include refid="Base_Column_List"/>)
+        values (#{uuid,jdbcType=INTEGER}, #{sceneid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER},
+          #{mac,jdbcType=VARCHAR}, #{dnlm,jdbcType=INTEGER}, #{mode1,jdbcType=INTEGER}, #{r1,jdbcType=INTEGER},
+          #{g1,jdbcType=INTEGER}, #{b1,jdbcType=INTEGER}, #{h1,jdbcType=INTEGER}, #{s1,jdbcType=INTEGER},
+          #{w1,jdbcType=INTEGER}, #{c1,jdbcType=INTEGER}, #{cri1,jdbcType=INTEGER}, #{warm1,jdbcType=INTEGER},
+          #{bri1,jdbcType=INTEGER}, #{on1,jdbcType=INTEGER}, #{mode2,jdbcType=INTEGER}, #{r2,jdbcType=INTEGER},
+          #{g2,jdbcType=INTEGER}, #{b2,jdbcType=INTEGER}, #{h2,jdbcType=INTEGER}, #{s2,jdbcType=INTEGER},
+          #{w2,jdbcType=INTEGER}, #{c2,jdbcType=INTEGER}, #{cri2,jdbcType=INTEGER}, #{warm2,jdbcType=INTEGER},
+          #{bri2,jdbcType=INTEGER}, #{on2,jdbcType=INTEGER}, #{dynamic,jdbcType=INTEGER},
+          #{orderIndex,jdbcType=INTEGER}, #{reserve1,jdbcType=INTEGER}, #{creationTime,jdbcType=INTEGER}
+          )
+    </insert>
+
+    <delete id="deleteBySceneid" parameterType="java.lang.Integer">
+        delete from scene_lights where sceneid = #{sceneid,jdbcType=INTEGER}
+    </delete>
+
+    <update id="update" parameterType="org.sj.iot.gateway.data.model.SceneLights">
+        update scene_lights
+        <set>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="dnlm != null">
+                dnlm = #{dnlm,jdbcType=INTEGER},
+            </if>
+            <if test="mode1 != null">
+                mode1 = #{mode1,jdbcType=INTEGER},
+            </if>
+            <if test="r1 != null">
+                r1 = #{r1,jdbcType=INTEGER},
+            </if>
+            <if test="g1 != null">
+                g1 = #{g1,jdbcType=INTEGER},
+            </if>
+            <if test="b1 != null">
+                b1 = #{b1,jdbcType=INTEGER},
+            </if>
+            <if test="h1 != null">
+                h1 = #{h1,jdbcType=INTEGER},
+            </if>
+            <if test="s1 != null">
+                s1 = #{s1,jdbcType=INTEGER},
+            </if>
+            <if test="w1 != null">
+                w1 = #{w1,jdbcType=INTEGER},
+            </if>
+            <if test="c1 != null">
+                c1 = #{c1,jdbcType=INTEGER},
+            </if>
+            <if test="cri1 != null">
+                cri1 = #{cri1,jdbcType=INTEGER},
+            </if>
+            <if test="warm1 != null">
+                warm1 = #{warm1,jdbcType=INTEGER},
+            </if>
+            <if test="bri1 != null">
+                bri1 = #{bri1,jdbcType=INTEGER},
+            </if>
+            <if test="on1 != null">
+                on1 = #{on1,jdbcType=INTEGER},
+            </if>
+            <if test="mode2 != null">
+                mode2 = #{mode2,jdbcType=INTEGER},
+            </if>
+            <if test="r2 != null">
+                r2 = #{r2,jdbcType=INTEGER},
+            </if>
+            <if test="g2 != null">
+                g2 = #{g2,jdbcType=INTEGER},
+            </if>
+            <if test="b2 != null">
+                b2 = #{b2,jdbcType=INTEGER},
+            </if>
+            <if test="h2 != null">
+                h2 = #{h2,jdbcType=INTEGER},
+            </if>
+            <if test="s2 != null">
+                s2 = #{s2,jdbcType=INTEGER},
+            </if>
+            <if test="w2 != null">
+                w2 = #{w2,jdbcType=INTEGER},
+            </if>
+            <if test="c2 != null">
+                c2 = #{c2,jdbcType=INTEGER},
+            </if>
+            <if test="cri2 != null">
+                cri2 = #{cri2,jdbcType=INTEGER},
+            </if>
+            <if test="warm2 != null">
+                warm2 = #{warm2,jdbcType=INTEGER},
+            </if>
+            <if test="bri2 != null">
+                bri2 = #{bri2,jdbcType=INTEGER},
+            </if>
+            <if test="on2 != null">
+                on2 = #{on2,jdbcType=INTEGER},
+            </if>
+            <if test="dynamic != null">
+                dynamic = #{dynamic,jdbcType=INTEGER},
+            </if>
+            <if test="orderIndex != null">
+                order_index = #{orderIndex,jdbcType=INTEGER},
+            </if>
+            <if test="reserve1 != null">
+                reserve1 = #{reserve1,jdbcType=INTEGER},
+            </if>
+        </set>
+        where sceneid = #{sceneid,jdbcType=INTEGER} and mac = #{mac,jdbcType=VARCHAR}
+    </update>
+</mapper>

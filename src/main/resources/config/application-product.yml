@@ -1,0 +1,8 @@
+# 生产环境
+connection:
+    client:
+        host: 127.0.0.1
+        port: 30000
+        ssl: true
+        heartbeat-time: 30
+        reconnect-time: 30

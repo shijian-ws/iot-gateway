@@ -34,11 +34,11 @@
             <artifactId>iot-util</artifactId>
             <version>${iot.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.sj.iot</groupId>
             <artifactId>iot-comm</artifactId>
             <version>${iot.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-handler</artifactId>

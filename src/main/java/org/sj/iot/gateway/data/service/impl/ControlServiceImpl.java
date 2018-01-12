@@ -1,6 +1,5 @@
 package org.sj.iot.gateway.data.service.impl;
 
-import org.sj.iot.CommUtil;
 import org.sj.iot.gateway.data.model.Accounts;
 import org.sj.iot.gateway.data.model.Gatewayinfo;
 import org.sj.iot.gateway.data.service.tx.IAccountsService;
@@ -31,7 +30,7 @@ public class ControlServiceImpl implements IControlService {
 
     @PostConstruct
     public void init() {
-        new Thread(() -> CommUtil.ssdp("ssdp\n".getBytes(), "ssdp\n0\n".getBytes(), result -> name[0] = new String(result))).start();
+        /*new Thread(() -> CommUtil.ssdp("ssdp\n".getBytes(), "ssdp\n0\n".getBytes(), result -> name[0] = new String(result))).start();*/
     }
 
     @Override
@@ -60,7 +59,7 @@ public class ControlServiceImpl implements IControlService {
         int oper = Integer.valueOf(0).equals(null) ? 0 : 1;
         String name = this.name[0];
         if (name != null) {
-            CommUtil.send(name, String.format("oper\n%s", oper).getBytes(), 3000);
+            /*CommUtil.send(name, String.format("oper\n%s", oper).getBytes(), 3000);*/
         }
     }
 
@@ -74,7 +73,7 @@ public class ControlServiceImpl implements IControlService {
         int b = 10;
         String name = this.name[0];
         if (name != null) {
-            CommUtil.send(name, String.format("color\n%s%s%s", Integer.toHexString(r), Integer.toHexString(g), Integer.toHexString(b)).getBytes(), 3000);
+            /*CommUtil.send(name, String.format("color\n%s%s%s", Integer.toHexString(r), Integer.toHexString(g), Integer.toHexString(b)).getBytes(), 3000);*/
         }
     }
 }
